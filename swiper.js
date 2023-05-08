@@ -91,7 +91,7 @@ function showItem(index) {
         // const favicon = document.createElement('img');
         // favicon.setAttribute('src', `https://www.google.com/s2/favicons?domain=${hostname}&sz=${36}`)
 
-console.log(hostname);
+//         console.log(hostname);
 
 
         link.innerHTML = `<a href="${item.sourceUrl}" target="_blank">${item.sourceName}</a>`;
@@ -131,14 +131,14 @@ async function getData() {
     currentIndex = 0;
     if (!getLocalStorage("swiper_inshorts")) {
         try {
-            const response = await fetch(`https://winter-smoke-73a6.sixyjntpqun7805.workers.dev/?url=https://inshorts.me/news/trending?offset=0%26limit=200`);
+            const response = await fetch(`https://sparkling-brook-0825.sixyjntpqun7805.workers.dev/`);
             const data = await response.json();
-            setLocalStorage("swiper_inshorts", data.data.articles, 30 * 60000);
+            setLocalStorage("swiper_inshorts", data, 15 * 60000);
             // console.log(data)
-            items = data.data.articles.sort((a, b) => b.createdAt - a.createdAt);
+            items = data.sort((a, b) => b.createdAt - a.createdAt);
             showItem(0);
         } catch (error) {
-            console.error(`${error.stack}`);
+            console.error(`${error.stack},${error.message}`);
         }
     } else {
         items = getLocalStorage("swiper_inshorts").sort((a, b) => b.createdAt - a.createdAt);
