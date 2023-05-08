@@ -131,7 +131,7 @@ async function getData() {
     currentIndex = 0;
     if (!getLocalStorage("swiper_inshorts")) {
         try {
-            const response = await fetch(`https://winter-smoke-73a6.sixyjntpqun7805.workers.dev/?url=https://inshorts.me/news/trending?offset=0&limit=200`);
+            const response = await fetch(`https://winter-smoke-73a6.sixyjntpqun7805.workers.dev/?url=https://inshorts.me/news/trending?offset=0%26limit=200`);
             const data = await response.json();
             setLocalStorage("swiper_inshorts", data.data.articles, 30 * 60000);
             // console.log(data)
