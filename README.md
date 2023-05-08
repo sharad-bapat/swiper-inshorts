@@ -1,0 +1,11 @@
+## Swipeable News Reader
+
+This JavaScript code allows the user to swipe left or right to browse news articles from the Inshorts website. It uses touch events to detect the direction of the swipe, and displays the article's image, title, subtitle, date, and content. 
+
+The code initializes two variables, `currentIndex` and `items`, to keep track of the current article index and the list of articles, respectively. It then sets up an event listener to detect touchstart and touchend events on the `main` container element. When a touchend event is detected, the code calculates the swipe direction by comparing the difference between the start and end X and Y coordinates of the touch event. If the horizontal distance (`deltaX`) is greater than the vertical distance (`deltaY`), the code checks the sign of `deltaX` to determine whether to swipe left or right. If the swipe direction is left, the code increments the `currentIndex` and displays the next article; if it is right, the code decrements the `currentIndex` and displays the previous article. 
+
+The `showItem` function takes an index as a parameter and uses it to display the corresponding article. It first creates several HTML elements to display the article's title, subtitle, date, content, and image. It also extracts the hostname from the article's source URL and displays it along with the source name. The function then appends these elements to a new `div` element, clears the content of the `content` container element, and appends the `div` element to the `content` container.
+
+The `getData` function initializes the `items` array and `currentIndex` variable, and checks whether there is any cached data in the browser's local storage. If there is no cached data, it fetches the latest articles from the Inshorts website using a Cloudflare worker and sets the `items` array to the returned data. If there is cached data, it retrieves it from local storage and sets the `items` array to the cached data. The function then sorts the `items` array by article creation date in descending order and displays the first article using the `showItem` function.
+
+Overall, this JavaScript code enables a simple and intuitive way for users to browse news articles from the Inshorts website.
